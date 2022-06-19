@@ -44,7 +44,7 @@ symbolはオブジェクトの名前空間を汚さずに新たなプロパテ�
 
 [参考](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#object-types)
 
-> 記法: `const <objectName>: { {<propertyName>: <value>;}+ }`
+> 記法: `const <objectName>: \{ {<propertyName>: <value>;}+ \}`
 
 また、オブジェクトリテラル表記では、プロパティを`;`で区切る。
 これは、他の言語においてインタフェースがプロパティをセミコロンで区切っていることに由来していると思われる。
