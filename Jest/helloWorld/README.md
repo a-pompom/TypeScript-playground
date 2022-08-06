@@ -2,10 +2,15 @@
 
 Jestへ入門する第一歩として、Hello Worldのテストコードを書いてみます。
 
+※ テストコード自体にも入門しておきたい場合には、[こちら](https://a-pompom.net/article/unit-test/introduction/)の記事を参考にしていただければ幸いです。
+
 ## ゴール
 
 Jestで文字列Hello Worldを返却する関数のテストコードを書けるようになることを目指します。
 
+## 目次
+
+[toc]
 
 ## 用語整理
 
@@ -33,7 +38,7 @@ JavaScriptのHello Worldと言えば`console.log('Hello World')`ですが、テ�
 
 文字列`Hello World`を返却するだけの関数です。コードも問題なく理解できるかと思います。
 
-```TypeScript
+```typescript
 // src/hello.ts
 /**
  * 挨拶文をつくる
@@ -52,16 +57,16 @@ export const hello = (): string => {
 Jestで書かれたテストコードには、実装コードでは見かけなかったものがいくつか登場します。見慣れないものを1つ1つ紹介していきながら全体像を組み立てると迷子になるかもしれません。
 ですので、実装コードもシンプルであることから、まずはテストコードを見て全体像を掴んでおきます。どのようなことがやりたいのか、コメントなどから雰囲気を見ておきましょう。
 
-```TypeScript
+```typescript
 // tests/hello.tests.ts
 // テストしたい実装をimport
-import { hello } from 'Jest/helloWorld/src/hello';
+import {hello} from 'Jest/helloWorld/src/hello';
 
 // describe()でテストコードをグループ化
 describe('Hello World', () => {
 
     // test()でテストの1つの単位を表現
-    test('return Hello World', () => {
+    test('文字列Hello Worldが得られること', () => {
         // GIVEN
         const sut = hello;
         const expected = 'Hello World';
@@ -105,7 +110,7 @@ test関数/it関数は、テストしたいことを表現するためのもの�
 
 > 書式: `test(name, fn, timeout)`
 
-name引数にはテストしたいものを・fn引数にはテストそのもの(assertion)を記述します。
+name引数にはテストしたいことの概要を・fn引数にはテストそのもの(assertion)を記述します。
 また、timeout引数はオプショナルで、指定したミリ秒以上(デフォルトは5秒)経過するとテストが失敗するようになります。これはテスト対象の性能を見たいときに指定するとよいでしょう。
 
 #### 補足: なぜtest/it関数の2つが存在するのか
@@ -125,7 +130,7 @@ it関数はtest関数のエイリアスである、と先ほどは説明しま�
 
 ```TypeScript
 // test()でテストの1つの単位を表現
-test('return Hello World', () => {
+test('文字列Hello Worldが得られること', () => {
     // GIVEN
     const sut = hello;
     const expected = 'Hello World';
@@ -138,7 +143,7 @@ test('return Hello World', () => {
 ```
 
 GIVEN・WHENに相当するところでは、hello関数を呼び出した結果・期待値をそれぞれactual・expectedとして保持しています。
-Jest特有の表現が出てくるTHENの部分では、actual・expectedをどのように検証しているのか、探ってみましょう。
+Jest特有の表現が出てくるTHENの部分では、actual・expectedをどのようにassertionとして検証しているのか、探ってみましょう。
 
 #### expect
 
@@ -168,7 +173,7 @@ toBe関数に触れる前に、matcherという用語についてもう少し見
 まずは単語の意味から確認しておきます。2つのものが等しいか判定するもの、ということを意味しており、マッチングのようなカタカナ言葉でも使われるかと思います。
 Hello World関数のテストコードの文脈では、期待値・関数の出力が等しいか判定するためのものがmatcherである、と表現することができます。
 
-Jestにおけるmatcherは`関数が呼ばれたという事象`と処理が終わった後の状態が等しいか、といったようなもっと高度なものもあります。
+Jestにおけるmatcherでは、`関数が呼ばれたという事象`と処理が終わった後の状態が等しいか、といったようなもっと高度なものもあります。
 ですが、ひとまず入門段階ではmatcherは期待値と実際の結果を比較することでテストコードの妥当性を評価するものだな、という認識で十分だと思います。
 
 #### toBe

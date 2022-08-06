@@ -1,8 +1,8 @@
-import { hello } from 'Jest/helloWorld/src/hello';
+import {hello} from 'Jest/helloWorld/src/hello';
 
 describe('Hello World', () => {
 
-    test('return Hello World', () => {
+    test('文字列Hello Worldが得られること', () => {
         // GIVEN
         const sut = hello;
         const expected = 'Hello World';
