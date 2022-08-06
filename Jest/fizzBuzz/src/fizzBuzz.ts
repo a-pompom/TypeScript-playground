@@ -1,4 +1,4 @@
-type FizzBuzzMessage = 'Fizz' | 'Buzz' | 'FizzBuzz!!' | number;
+export type FizzBuzzMessage = 'Fizz' | 'Buzz' | 'FizzBuzz!!' | number;
 
 // 割る数
 const DIVISOR_FIZZ = 3;
