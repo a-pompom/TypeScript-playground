@@ -157,7 +157,7 @@ parameterizedTest('3で割り切れる', (パラメータ) => {
 const args1 = [3, 'Fizz'];
 const args2 = [33, 'Fizz'];
 
-// 引数に配列をグルーピングしたものがtable引数
+// 引数の配列をグルーピングしたものがtable引数
 const table = [args1, args2];
 ```
 
